@@ -1,7 +1,7 @@
 // angular.module('welcome', []);
 
-welcome.controller('WelcomeCtrl', ['$scope', function($scope){
+welcome.controller('WelcomeCtrl', ['$scope', '$state', function($scope, $state){
   $scope.toCarSelection = function(){
-    window.alert('State to car selection');
+    $state.go('carSelection');
   };
 }]);

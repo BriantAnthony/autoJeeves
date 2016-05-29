@@ -1,6 +1,7 @@
 angular.module('app', [
   'ionic', 
-  'welcome'
+  'welcome',
+  'carSelection'
 ])
 
 .run(function($ionicPlatform) {
