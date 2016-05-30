@@ -1,0 +1,44 @@
+<ion-view view-title="Car Selection">
+  <ion-content class="padding car-select-content">
+    <h2>
+      Select your vehicle
+    </h2>
+    <p>
+      Select your make, model, and year.
+    </p>
+
+    <div class="list">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Make
+        </div>
+        <select ng-model="selectedVehicle.make" ng-options="make as make.name for make in makeList" ng-change="selectMake(selectedVehicle.make)"></select>
+      </label>
+
+      <label class="item item-input item-select" ng-show="vehicle.make">
+        <div class="input-label">
+          Model
+        </div>
+        <select ng-model="selectedVehicle.model" ng-disabled="!vehicle.make" ng-options="model as model.name for model in modelList" ng-change="selectModel(selectedVehicle.model)"></select>
+      </label>
+
+      <label class="item item-input item-select" ng-show="vehicle.model">
+        <div class="input-label">
+          Year
+        </div>
+        <select ng-model="selectedVehicle.year" ng-disabled="!vehicle.model" ng-options="year as year.year for year in yearList" ng-change="selectYear(selectedVehicle.year)"></select>
+      </label>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button button-block button-assertive" ng-click="selectVehicle()" ng-disabled="!vehicle.make || !vehicle.model || !vehicle.year">
+          Continue
+        </button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

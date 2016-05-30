@@ -1,0 +1,37 @@
+<ion-view view-title="Maintenace Schedule">
+  <ion-content class="padding welcome-content">
+    <h2>Your Vehicle</h2>
+    <div class="row responsive-sm">
+      <div class="col">
+
+      <ul class="list">
+        <li class="item">
+          {{vehicle.make}}
+        </li>
+        <li class="item">
+          {{vehicle.model}}
+        </li>
+        <li class="item">
+          {{vehicle.year}}
+        </li>
+      </ul>
+      <h2>Maintenance Schedule</h2>
+      <ul class="list">
+        <li class="item" ng-repeat="item in schedules | orderBy:'-intervalMileage':'-intervalMonth'">
+          {{item.action}} {{item.item}}<br> every 
+          <span ng-hide="item.intervalMileage==0">{{item.intervalMileage}} miles</span>
+          <span ng-show="item.intervalMileage==0">{{item.intervalMonth}} months</span>
+          <span ng-show="item.intervalMileage>0">
+            <br>
+            or every {{item.intervalMonth}} months
+          </span>.
+        </li>
+        <li ng-if="schedules.length==0">
+          No Maintenance Schedule available at this time.
+        </li>
+      </ul>
+      
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
