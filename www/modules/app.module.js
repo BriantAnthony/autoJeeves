@@ -1,7 +1,7 @@
 angular.module('app', [
   'ionic', 
   'welcome',
-  'carSelection'
+  'cars'
 ])
 
 .run(function($ionicPlatform) {
@@ -21,7 +21,6 @@ angular.module('app', [
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcome');
 
