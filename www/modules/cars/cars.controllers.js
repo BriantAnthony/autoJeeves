@@ -41,7 +41,7 @@ cars
   $scope.vehicleMakes();
 }])
 
-.controller('MaintenanceCtrl', ['$scope', '$stateParams', 'CarObjectService', 'CarFactory', function($scope, $stateParams, CarObjectService, CarFactory) {
+.controller('MaintenanceCtrl', ['$filter', '$scope', '$stateParams', 'CarObjectService', 'CarFactory', function($filter, $scope, $stateParams, CarObjectService, CarFactory) {
   console.log(CarObjectService);
   console.log($stateParams);
   $scope.schedules = [];
@@ -54,7 +54,13 @@ cars
     CarFactory.getMaintenanceSchedule($stateParams.id)
       .then(function(promise){
         console.log(promise);
-        $scope.schedules = promise.data.actionHolder;
+        var _array = promise.data.actionHolder; 
+        angular.forEach(_array, function(value, key){
+          if(value.frequency == 3 || 4 || 5 || 6) {
+            $scope.schedules.push(value);
+          }
+        });
+        console.log($scope.schedules);
       })
       .catch(function(error){
         window.alert(error);

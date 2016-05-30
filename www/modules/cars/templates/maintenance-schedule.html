@@ -15,7 +15,18 @@
           {{vehicle.year}}
         </li>
       </ul>
-            
+      <h2>Maintenance Schedule</h2>
+      <ul class="list">
+        <li class="item" ng-repeat="item in schedules | orderBy:'-intervalMileage':'-intervalMonth'">
+          {{item.action}} {{item.item}}<br> every 
+          <span ng-hide="item.intervalMileage==0">{{item.intervalMileage}} miles</span>
+          <span ng-show="item.intervalMileage==0">{{item.intervalMonth}} months</span>
+          <span ng-show="item.intervalMileage>0">
+            <br>
+            or every {{item.intervalMonth}} months
+          </span>.
+        </li>
+      </ul>
         <!-- <button class="button button-block button-assertive" ng-click="toCarSelection()">
           Continue
         </button> -->
